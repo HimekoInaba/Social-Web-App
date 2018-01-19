@@ -1,0 +1,16 @@
+kz\vaadin\view\UserProfileView.class
+kz\vaadin\ui\RootUI$MyContextLoaderListener.class
+kz\vaadin\ui\RootUI$Servlet.class
+kz\vaadin\ui\RootUI.class
+kz\vaadin\service\UserServiceImpl.class
+kz\vaadin\repository\RolesRepository.class
+kz\vaadin\repository\UsersRepository.class
+kz\vaadin\service\UserDetailsServiceImpl.class
+kz\vaadin\view\LoginView.class
+kz\vaadin\view\RegistrationView.class
+kz\vaadin\model\Roles.class
+kz\vaadin\configuration\AuthenticationConfiguration.class
+kz\vaadin\model\User.class
+kz\vaadin\service\UserService.class
+kz\vaadin\ui\RootUI$MyConfiguration.class
+kz\vaadin\view\UserListView.class
