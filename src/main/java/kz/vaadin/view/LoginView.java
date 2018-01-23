@@ -3,18 +3,23 @@ package kz.vaadin.view;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.navigator.View;
-import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import kz.vaadin.model.User;
 import kz.vaadin.service.UserServiceImpl;
+import kz.vaadin.ui.LoginInterface;
 import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Component;
+import org.vaadin.spring.annotation.PrototypeScope;
 import org.vaadin.spring.security.VaadinSecurity;
 
 
-@SpringView(name = LoginView.VIEW_NAME)
+@PrototypeScope
+@Component
 public class LoginView extends VerticalLayout implements View {
 
     @Autowired
@@ -23,9 +28,13 @@ public class LoginView extends VerticalLayout implements View {
     @Autowired
     VaadinSecurity vaadinSecurity;
 
-    public static final String VIEW_NAME = "/login";
+    @Autowired
+    private ApplicationContext appContext;
 
-    User user;
+    @Autowired
+    private RootUI rootUI;
+
+    private User user;
 
     private Label loginFailedLabel;
     private Button login;
@@ -56,20 +65,12 @@ public class LoginView extends VerticalLayout implements View {
         login.addClickListener(click -> {
             if(username.getValue() != "" && password.getValue() != "") {
                 login(username.getValue(), password.getValue());
-                user = userService.findByUsername(username.getValue());
-                if (user == null) {
-                    Notification.show("Incorrect username or password", Notification.Type.ERROR_MESSAGE);
-                    getUI().getNavigator().navigateTo(RootUI.LOGINVIEW);
-                } else {
-                    getSession().setAttribute("user", user);
-                    getUI().getNavigator().navigateTo(RootUI.USERPROFILEVIEW + "/" + user.getId());
-                }
             }else{
                 Notification.show("Empty username or password!", Notification.Type.ERROR_MESSAGE);
             }
         });
 
-        register.addClickListener(click -> getUI().getNavigator().navigateTo(RootUI.REGISTRATIONVIEW));
+        register.addClickListener(click -> rootUI.registerNavigation());
 
         login.setClickShortcut(ShortcutAction.KeyCode.ENTER);
         register.setClickShortcut(ShortcutAction.KeyCode.ENTER);
@@ -77,10 +78,15 @@ public class LoginView extends VerticalLayout implements View {
 
     public void login(String username, String password) {
         try {
-             vaadinSecurity.login(username, password);
+             final Authentication authentication = vaadinSecurity.login(username, password);
+             user = userService.findByUsername(username);
+             getSession().setAttribute("user", user);
+             LoginInterface loginInterface = appContext.getBean(LoginInterface.class);
+             loginInterface.login(authentication);
         } catch (AuthenticationException ex){
             loginFailedLabel.setValue(String.format("Login failed: %s", ex.getMessage()));
             loginFailedLabel.setVisible(true);
+            Notification.show("Incorrect username or password", Notification.Type.ERROR_MESSAGE);
         } catch (Exception ex) {
             Notification.show("An unexpected error occurred", ex.getMessage(), Notification.Type.ERROR_MESSAGE);
             LoggerFactory.getLogger(getClass()).error("Unexpected error while logging in", ex);

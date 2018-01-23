@@ -3,26 +3,23 @@ package kz.vaadin.view;
 import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.View;
-import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import kz.vaadin.model.User;
 import kz.vaadin.service.UserServiceImpl;
-import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.vaadin.spring.annotation.PrototypeScope;
 
 
-@SpringView(name = RegistrationView.VIEW_NAME)
+@PrototypeScope
+@Component
 public class RegistrationView extends VerticalLayout implements View {
-
-    public static final String VIEW_NAME = "/register";
 
     @Autowired
     UserServiceImpl userService;
 
     @Autowired
     LoginView loginView;
-
-    User user;
 
     public RegistrationView() {
 
@@ -68,12 +65,9 @@ public class RegistrationView extends VerticalLayout implements View {
             if(username.getValue() !="" && password.getValue() != "" && confirmPassword.getValue() !="" && email.getValue() != ""){
                 if (verifyPassword(password.getValue(), confirmPassword.getValue())) {
                     userService.add(new User(username.getValue(), password.getValue(), confirmPassword.getValue(), email.getValue()));
-                    user = userService.findByUsername(username.getValue());
                     loginView.login(username.getValue(), password.getValue());
-                    getUI().getNavigator().navigateTo(RootUI.USERPROFILEVIEW + "/" + user.getId());
                 } else {
                     Notification.show("Passwords don't match!", Notification.Type.ERROR_MESSAGE);
-                    getUI().getNavigator().navigateTo(RootUI.REGISTRATIONVIEW);
                 }
             }else {
                 Notification.show("All fields are mandatory!", Notification.Type.ERROR_MESSAGE);

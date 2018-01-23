@@ -9,10 +9,14 @@ import com.vaadin.shared.communication.PushMode;
 import com.vaadin.shared.ui.ui.Transport;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 import kz.vaadin.model.User;
+import kz.vaadin.service.UserService;
 import kz.vaadin.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.context.ContextLoaderListener;
 
 import com.vaadin.annotations.Theme;
@@ -30,10 +34,10 @@ import org.vaadin.spring.security.VaadinSecurity;
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 @Theme("mytheme")
-@SpringUI
+@SpringUI(path = "/")
 @SuppressWarnings("serial")
 @Push(value = PushMode.AUTOMATIC, transport = Transport.LONG_POLLING)
-public class RootUI extends UI {
+public class RootUI extends UI implements LoginInterface{
 
     @WebServlet(value = "/*", asyncSupported = true)
     public static class Servlet extends SpringVaadinServlet {
@@ -60,26 +64,85 @@ public class RootUI extends UI {
     @Autowired
     VaadinSecurity vaadinSecurity;
 
+    @Autowired
+    UserService userService;
+
+    private Navigator navigator;
+
+    User user;
+
+    @Autowired
+    private ApplicationContext appContext;
+
+    final VerticalLayout layout = new VerticalLayout();
+
     @Override
     protected void init(VaadinRequest request) {
 
+        System.out.println("AppContext: " + appContext.getDisplayName() + "  " + appContext.getStartupDate());
+        if (vaadinSecurity.isAuthenticated()) {
+            showMainScreen();
+        }else{
+            setContent(appContext.getBean(LoginView.class));
+        }
+    }
+
+    @Override
+    public void login(Authentication authentication) {
+        if(authentication.isAuthenticated()) {
+            access(this::showMainScreen);
+        }
+    }
+
+    private void showMainScreen() {
+        createNavigator();
+        layout.setMargin(true);
+        layout.setWidth("80%");
+        setSizeUndefined();
+        setContent(layout);
+
+        Label welcome = new Label("You are succefully loged in, welcome to the Main Screen");
+        Button profile = new Button("Your profile");
+        Button userlist = new Button("List of all users");
+        Button logout = new Button("Logout");
+
+        layout.addComponents(welcome, profile, userlist, logout);
+
+        welcome.addStyleName(ValoTheme.LABEL_H1);
+
+        profile.addClickListener(click -> {
+            user = (User) getUI().getSession().getAttribute("user");
+            getUI().getNavigator().navigateTo(RootUI.USERPROFILEVIEW + "/" + user.getId());
+        });
+
+        userlist.addClickListener(click -> getUI().getNavigator().navigateTo(RootUI.USERLISTVIEW));
+
+        logout.addClickListener(click -> {
+            //setContent(appContext.getBean(LoginView.class));
+            vaadinSecurity.logout();
+            System.out.println(vaadinSecurity.isAuthenticated());
+            RootUI.getCurrent().getSession().close();
+            System.out.println(vaadinSecurity.isAuthenticated());
+            this.close();
+            this.detach();
+            // Redirect from the page
+            getUI().getPage().setLocation("/");
+            // Close the VaadinSession
+            getSession().close();
+        });
+    }
+
+     public void registerNavigation(){
+        setContent(appContext.getBean(RegistrationView.class));
+    }
+
+    private void createNavigator(){
+
         // Create a navigator to control the views
-        Navigator navigator = new Navigator(this, this);
+        navigator = new Navigator(this, this);
 
         // Create and register the views
         navigator.addProvider(viewProvider);
         setNavigator(navigator);
-
-        final VerticalLayout layout = new VerticalLayout();
-        layout.setMargin(true);
-        layout.setWidth("80%");
-        setContent(layout);
-
-        if (vaadinSecurity.isAuthenticated()) {
-            User user = (User) getSession().getAttribute("user");
-            getUI().getNavigator().navigateTo(RootUI.USERPROFILEVIEW + "/" + user.getId());
-        } else {
-            getUI().getNavigator().navigateTo(RootUI.LOGINVIEW);
-        }
     }
 }

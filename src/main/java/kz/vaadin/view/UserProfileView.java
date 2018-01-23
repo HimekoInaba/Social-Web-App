@@ -10,8 +10,6 @@ import kz.vaadin.service.UserServiceImpl;
 import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.vaadin.ui.Label;
-import org.springframework.security.access.annotation.Secured;
-import org.vaadin.spring.security.VaadinSecurity;
 
 @SpringView(name = UserProfileView.VIEW_NAME)
 public class UserProfileView extends VerticalLayout implements View {
@@ -21,14 +19,8 @@ public class UserProfileView extends VerticalLayout implements View {
     @Autowired
     UserServiceImpl userService;
 
-    @Autowired
-    VaadinSecurity vaadinSecurity;
-
     private User user;
     private long id;
-
-    public UserProfileView(){
-    }
 
     public void initializeForms(){
         user = userService.findById(id);
@@ -52,7 +44,7 @@ public class UserProfileView extends VerticalLayout implements View {
         currentSessionUsername.addStyleName(ValoTheme.LABEL_H3);
 
         logout.addClickListener(click ->{
-            getUI().getNavigator().navigateTo(RootUI.LOGINVIEW);
+            getUI().getNavigator().navigateTo("/");
             RootUI.getCurrent().getSession().close();
         });
 
@@ -68,10 +60,6 @@ public class UserProfileView extends VerticalLayout implements View {
                 id = (long) Integer.parseInt(msg);
             }
         }
-        if(vaadinSecurity.isAuthenticated()){
-            initializeForms();
-        }else{
-            getUI().getNavigator().navigateTo(RootUI.NOTLOGGEDINVEW);
-        }
+        initializeForms();
     }
 }

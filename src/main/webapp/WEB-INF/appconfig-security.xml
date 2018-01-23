@@ -16,4 +16,14 @@
         <beans:constructor-arg name="strength" value="11"/>
     </beans:bean>
 
+
+    <beans:bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
+        <filter-chain-map>
+            <filter-chain pattern="/**" filters="securityContextPersistenceFilter"/>
+        </filter-chain-map>
+    </beans:bean>
+
+
+    <beans:bean id="securityContextPersistenceFilter" class="org.springframework.security.web.context.SecurityContextPersistenceFilter"/>
+
 </beans:beans>

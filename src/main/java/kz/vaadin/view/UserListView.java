@@ -9,7 +9,6 @@ import kz.vaadin.model.User;
 import kz.vaadin.repository.UsersRepository;
 import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.vaadin.spring.security.VaadinSecurity;
 
 import java.util.List;
 
@@ -20,9 +19,6 @@ public class UserListView extends VerticalLayout implements View {
 
     @Autowired
     UsersRepository usersRepository;
-
-    @Autowired
-    VaadinSecurity vaadinSecurity;
 
     public void initializeForms(){
         Label label = new Label("List of all users");
@@ -44,17 +40,13 @@ public class UserListView extends VerticalLayout implements View {
         label.addStyleName(ValoTheme.LABEL_H1);
 
         logout.addClickListener(click -> {
-            getUI().getNavigator().navigateTo(RootUI.LOGINVIEW);
+            getUI().getNavigator().navigateTo("/");
             RootUI.getCurrent().getSession().close();
         });
     }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        if(vaadinSecurity.isAuthenticated()){
-            initializeForms();
-        }else{
-            getUI().getNavigator().navigateTo(RootUI.NOTLOGGEDINVEW);
-        }
+        initializeForms();
     }
 }
