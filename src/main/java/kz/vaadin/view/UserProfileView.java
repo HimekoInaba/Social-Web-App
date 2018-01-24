@@ -10,7 +10,10 @@ import kz.vaadin.service.UserServiceImpl;
 import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.vaadin.ui.Label;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
+@Secured({"ROLE_USER", "ROLE_ADMIN"})
 @SpringView(name = UserProfileView.VIEW_NAME)
 public class UserProfileView extends VerticalLayout implements View {
 
@@ -19,10 +22,17 @@ public class UserProfileView extends VerticalLayout implements View {
     @Autowired
     UserServiceImpl userService;
 
+    @Autowired
+    UserDetailsService userDetailsService;
+
+    @Autowired
+    RootUI rootUI;
+
     private User user;
     private long id;
 
     public void initializeForms(){
+
         user = userService.findById(id);
 
         Button logout = new Button("Logout");
@@ -43,12 +53,9 @@ public class UserProfileView extends VerticalLayout implements View {
         email.addStyleName(ValoTheme.LABEL_H2);
         currentSessionUsername.addStyleName(ValoTheme.LABEL_H3);
 
-        logout.addClickListener(click ->{
-            getUI().getNavigator().navigateTo("/");
-            RootUI.getCurrent().getSession().close();
-        });
+        logout.addClickListener(click -> rootUI.logout());
 
-        userList.addClickListener(click -> getUI().getNavigator().navigateTo(RootUI.USERLISTVIEW));
+        userList.addClickListener(click -> rootUI.navigateToUserlist());
     }
 
     @Override

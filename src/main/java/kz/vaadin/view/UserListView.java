@@ -9,9 +9,11 @@ import kz.vaadin.model.User;
 import kz.vaadin.repository.UsersRepository;
 import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 
 import java.util.List;
 
+@Secured({"ROLE_ADMIN"})
 @SpringView(name = UserListView.VIEW_NAME)
 public class UserListView extends VerticalLayout implements View {
 
@@ -20,7 +22,11 @@ public class UserListView extends VerticalLayout implements View {
     @Autowired
     UsersRepository usersRepository;
 
+    @Autowired
+    RootUI rootUI;
+
     public void initializeForms(){
+
         Label label = new Label("List of all users");
         Button logout = new Button("Logout");
         List<User> users;
@@ -39,10 +45,7 @@ public class UserListView extends VerticalLayout implements View {
 
         label.addStyleName(ValoTheme.LABEL_H1);
 
-        logout.addClickListener(click -> {
-            getUI().getNavigator().navigateTo("/");
-            RootUI.getCurrent().getSession().close();
-        });
+        logout.addClickListener(click -> rootUI.logout());
     }
 
     @Override

@@ -3,6 +3,7 @@ package kz.vaadin.view;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.navigator.View;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import kz.vaadin.model.User;
@@ -64,7 +65,7 @@ public class LoginView extends VerticalLayout implements View {
 
         login.addClickListener(click -> {
             if(username.getValue() != "" && password.getValue() != "") {
-                login(username.getValue(), password.getValue());
+                login(username.getValue(), password.getValue(), null);
             }else{
                 Notification.show("Empty username or password!", Notification.Type.ERROR_MESSAGE);
             }
@@ -76,11 +77,15 @@ public class LoginView extends VerticalLayout implements View {
         register.setClickShortcut(ShortcutAction.KeyCode.ENTER);
     }
 
-    public void login(String username, String password) {
+    public void login(String username, String password, VaadinSession vaadinSession) {
         try {
              final Authentication authentication = vaadinSecurity.login(username, password);
              user = userService.findByUsername(username);
-             getSession().setAttribute("user", user);
+
+             if(RootUI.getCurrent().getSession() == null)
+                 RootUI.getCurrent().setSession(vaadinSession);
+
+             RootUI.getCurrent().getSession().setAttribute("user", user);
              LoginInterface loginInterface = appContext.getBean(LoginInterface.class);
              loginInterface.login(authentication);
         } catch (AuthenticationException ex){

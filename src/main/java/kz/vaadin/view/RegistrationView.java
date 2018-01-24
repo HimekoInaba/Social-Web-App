@@ -3,10 +3,12 @@ package kz.vaadin.view;
 import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.View;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.*;
 import kz.vaadin.model.User;
 import kz.vaadin.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.vaadin.spring.annotation.PrototypeScope;
 
@@ -17,6 +19,9 @@ public class RegistrationView extends VerticalLayout implements View {
 
     @Autowired
     UserServiceImpl userService;
+
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @Autowired
     LoginView loginView;
@@ -65,7 +70,9 @@ public class RegistrationView extends VerticalLayout implements View {
             if(username.getValue() !="" && password.getValue() != "" && confirmPassword.getValue() !="" && email.getValue() != ""){
                 if (verifyPassword(password.getValue(), confirmPassword.getValue())) {
                     userService.add(new User(username.getValue(), password.getValue(), confirmPassword.getValue(), email.getValue()));
-                    loginView.login(username.getValue(), password.getValue());
+                    userDetailsService.loadUserByUsername(username.getValue());
+                    VaadinSession currentSession = getSession();
+                    loginView.login(username.getValue(), password.getValue(), currentSession);
                 } else {
                     Notification.show("Passwords don't match!", Notification.Type.ERROR_MESSAGE);
                 }

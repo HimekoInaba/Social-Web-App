@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Push;
 import com.vaadin.navigator.Navigator;
+import com.vaadin.server.VaadinService;
 import com.vaadin.shared.communication.PushMode;
 import com.vaadin.shared.ui.ui.Transport;
 import com.vaadin.spring.navigator.SpringViewProvider;
@@ -55,17 +56,14 @@ public class RootUI extends UI implements LoginInterface{
     @Autowired
     SpringViewProvider viewProvider;
 
-    public final static String REGISTRATIONVIEW =  RegistrationView.VIEW_NAME;
-    public final static String USERPROFILEVIEW =  UserProfileView.VIEW_NAME;
-    public final static String LOGINVIEW =  LoginView.VIEW_NAME;
-    public final static String USERLISTVIEW = UserListView.VIEW_NAME;
-    public final static String NOTLOGGEDINVEW = NotLoggedErrorView.VIEW_NAME;
-
     @Autowired
     VaadinSecurity vaadinSecurity;
 
     @Autowired
     UserService userService;
+
+    public final static String USERPROFILEVIEW =  UserProfileView.VIEW_NAME;
+    public final static String USERLISTVIEW = UserListView.VIEW_NAME;
 
     private Navigator navigator;
 
@@ -80,18 +78,16 @@ public class RootUI extends UI implements LoginInterface{
     protected void init(VaadinRequest request) {
 
         System.out.println("AppContext: " + appContext.getDisplayName() + "  " + appContext.getStartupDate());
-        if (vaadinSecurity.isAuthenticated()) {
+        if (vaadinSecurity.isAuthenticated())
             showMainScreen();
-        }else{
+        else
             setContent(appContext.getBean(LoginView.class));
-        }
     }
 
     @Override
     public void login(Authentication authentication) {
-        if(authentication.isAuthenticated()) {
+        if(authentication.isAuthenticated())
             access(this::showMainScreen);
-        }
     }
 
     private void showMainScreen() {
@@ -115,33 +111,34 @@ public class RootUI extends UI implements LoginInterface{
             getUI().getNavigator().navigateTo(RootUI.USERPROFILEVIEW + "/" + user.getId());
         });
 
-        userlist.addClickListener(click -> getUI().getNavigator().navigateTo(RootUI.USERLISTVIEW));
+        userlist.addClickListener(click -> navigateToUserlist());
 
-        logout.addClickListener(click -> {
-            //setContent(appContext.getBean(LoginView.class));
-            vaadinSecurity.logout();
-            System.out.println(vaadinSecurity.isAuthenticated());
-            RootUI.getCurrent().getSession().close();
-            System.out.println(vaadinSecurity.isAuthenticated());
-            this.close();
-            this.detach();
-            // Redirect from the page
-            getUI().getPage().setLocation("/");
-            // Close the VaadinSession
-            getSession().close();
-        });
+        logout.addClickListener(click -> logout());
     }
 
-     public void registerNavigation(){
+    public void logout(){
+        RootUI.getCurrent().getSession().getSession().invalidate();
+        RootUI.getCurrent().getSession().close();
+        RootUI.getCurrent().getPage().reload();
+    }
+
+    public void navigateToUserlist(){
+        try {
+            getUI().getNavigator().navigateTo(RootUI.USERLISTVIEW);
+        }
+        catch (Exception e){
+            RootUI.getCurrent().getPage().reload();
+            Notification.show("You don't have enough authorities to visit page");
+        }
+    }
+
+    public void registerNavigation(){
         setContent(appContext.getBean(RegistrationView.class));
     }
 
     private void createNavigator(){
 
-        // Create a navigator to control the views
         navigator = new Navigator(this, this);
-
-        // Create and register the views
         navigator.addProvider(viewProvider);
         setNavigator(navigator);
     }
