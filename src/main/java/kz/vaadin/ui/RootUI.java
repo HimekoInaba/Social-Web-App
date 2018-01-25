@@ -77,7 +77,6 @@ public class RootUI extends UI implements LoginInterface{
     @Override
     protected void init(VaadinRequest request) {
 
-        System.out.println("AppContext: " + appContext.getDisplayName() + "  " + appContext.getStartupDate());
         if (vaadinSecurity.isAuthenticated())
             showMainScreen();
         else
@@ -114,6 +113,8 @@ public class RootUI extends UI implements LoginInterface{
         userlist.addClickListener(click -> navigateToUserlist());
 
         logout.addClickListener(click -> logout());
+
+
     }
 
     public void logout(){
@@ -128,7 +129,7 @@ public class RootUI extends UI implements LoginInterface{
         }
         catch (Exception e){
             RootUI.getCurrent().getPage().reload();
-            Notification.show("You don't have enough authorities to visit page");
+            Notification.show("You don't have enough authorities to visit page", Notification.Type.ERROR_MESSAGE);
         }
     }
 
@@ -137,7 +138,6 @@ public class RootUI extends UI implements LoginInterface{
     }
 
     private void createNavigator(){
-
         navigator = new Navigator(this, this);
         navigator.addProvider(viewProvider);
         setNavigator(navigator);

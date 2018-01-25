@@ -7,34 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08d083b1-1e11-4c95-8a82-b098ac78271f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/kz/vaadin/view/NotLoggedErrorView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/view/NotLoggedErrorView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/view/NotLoggedErrorView.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/service/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/kz/vaadin/service/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/ui/RootUI$MyConfiguration.class" afterPath="$PROJECT_DIR$/target/classes/kz/vaadin/ui/RootUI$MyConfiguration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/ui/RootUI$MyContextLoaderListener.class" afterPath="$PROJECT_DIR$/target/classes/kz/vaadin/ui/RootUI$MyContextLoaderListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/ui/RootUI$Servlet.class" afterPath="$PROJECT_DIR$/target/classes/kz/vaadin/ui/RootUI$Servlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/ui/RootUI.class" afterPath="$PROJECT_DIR$/target/classes/kz/vaadin/ui/RootUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/view/LoginView.class" afterPath="$PROJECT_DIR$/target/classes/kz/vaadin/view/LoginView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/view/RegistrationView.class" afterPath="$PROJECT_DIR$/target/classes/kz/vaadin/view/RegistrationView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/view/UserListView.class" afterPath="$PROJECT_DIR$/target/classes/kz/vaadin/view/UserListView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/kz/vaadin/view/UserProfileView.class" afterPath="$PROJECT_DIR$/target/classes/kz/vaadin/view/UserProfileView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT.war" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/service/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/service/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/ui/RootUI$MyConfiguration.class" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/ui/RootUI$MyConfiguration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/ui/RootUI$MyContextLoaderListener.class" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/ui/RootUI$MyContextLoaderListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/ui/RootUI$Servlet.class" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/ui/RootUI$Servlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/ui/RootUI.class" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/ui/RootUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/view/LoginView.class" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/view/LoginView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/view/RegistrationView.class" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/view/RegistrationView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/view/UserListView.class" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/view/UserListView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/view/UserProfileView.class" afterPath="$PROJECT_DIR$/target/vaadinapp-1.0-SNAPSHOT/WEB-INF/classes/kz/vaadin/view/UserProfileView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kz/vaadin/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/kz/vaadin/model/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kz/vaadin/ui/RootUI.java" afterPath="$PROJECT_DIR$/src/main/java/kz/vaadin/ui/RootUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kz/vaadin/view/LoginView.java" afterPath="$PROJECT_DIR$/src/main/java/kz/vaadin/view/LoginView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kz/vaadin/view/RegistrationView.java" afterPath="$PROJECT_DIR$/src/main/java/kz/vaadin/view/RegistrationView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserListView.java" afterPath="$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserListView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserProfileView.java" afterPath="$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserProfileView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -48,13 +23,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="RootUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RootUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/ui/RootUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+            <state relative-caret-position="442">
+              <caret line="108" column="68" lean-forward="true" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1515#1542#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/RegistrationView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="253">
-              <caret line="72" column="44" lean-forward="true" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+              <caret line="72" column="44" lean-forward="false" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,8 +51,8 @@
       <file leaf-file-name="LoginView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/LoginView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="77" column="5" lean-forward="false" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+            <state relative-caret-position="507">
+              <caret line="95" column="71" lean-forward="false" selection-start-line="95" selection-start-column="71" selection-end-line="95" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,13 +60,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserProfileView.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserProfileView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserProfileView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="57" column="70" lean-forward="false" selection-start-line="57" selection-start-column="70" selection-end-line="57" selection-end-column="70" />
+            <state relative-caret-position="552">
+              <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="693">
+              <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+              <folding>
+                <element signature="e#1214#1215#0" expanded="true" />
+                <element signature="e#1239#1240#0" expanded="true" />
+                <element signature="e#2116#2117#0" expanded="true" />
+                <element signature="e#2145#2146#0" expanded="true" />
+                <element signature="e#2187#2188#0" expanded="true" />
+                <element signature="e#2223#2224#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,8 +104,8 @@
       <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="36" column="42" lean-forward="false" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+            <state relative-caret-position="546">
+              <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -122,32 +115,8 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserDetailsServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
-              <caret line="31" column="79" lean-forward="true" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
+              <caret line="31" column="79" lean-forward="false" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticationConfiguration.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/configuration/AuthenticationConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SecuredViewAccessControl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/configuration/SecuredViewAccessControl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="35" column="30" lean-forward="false" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#883#884#0" expanded="true" />
-                <element signature="e#924#925#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -165,16 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jpa</find>
-      <find>spring-data</find>
-      <find>vaadin</find>
-      <find>vaadin-spring</find>
-      <find>list</find>
-      <find>register</find>
-      <find>repository</find>
-      <find>regist</find>
-      <find>DEBUG</find>
-      <find>authenticate</find>
       <find>Clearing and reinitializing</find>
       <find>if (Transport.WEBSOCKET.equals(transport) || Transport.WEBSOCKET_XHR.equals(transport)) {</find>
       <find>session rein</find>
@@ -195,6 +154,16 @@
       <find>true</find>
       <find>checkch</find>
       <find>ch`</find>
+      <find>setVisible</find>
+      <find>image.setVisible</find>
+      <find>progress</find>
+      <find>avatar</find>
+      <find>Uploaded Image</find>
+      <find>path</find>
+      <find>system.out</find>
+      <find>PATH</find>
+      <find>filename</find>
+      <find>receiveUpload</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -229,7 +198,6 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/Repository/RolesRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/Service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/Service/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserDetailsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/configuration/AuthenticationConfiguration.java" />
@@ -245,10 +213,12 @@
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/view/NotLoggedErrorView.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/configuration/SecuredViewAccessControl.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/view/RegistrationView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserListView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserProfileView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/service/ImageUploaderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/ui/RootUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserProfileView.java" />
       </list>
     </option>
   </component>
@@ -319,9 +289,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -429,6 +397,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -664,12 +634,13 @@
       <workItem from="1516600809443" duration="11634000" />
       <workItem from="1516618782531" duration="17008000" />
       <workItem from="1516722330812" duration="325000" />
-      <workItem from="1516765933782" duration="12972000" />
+      <workItem from="1516765933782" duration="13182000" />
+      <workItem from="1516868644281" duration="12682000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104441000" />
+    <option name="totallyTimeSpent" value="117333000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -691,11 +662,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47949886" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20891514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21213749" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -738,14 +709,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/8.2.1/vaadin-server-8.2.1.jar!/com/vaadin/ui/Button.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="879">
-          <caret line="252" column="13" lean-forward="false" selection-start-line="252" selection-start-column="13" selection-end-line="252" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/SpringUIProvider.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.2.RELEASE/spring-web-5.0.2.RELEASE.jar!/org/springframework/web/context/ContextLoader.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -835,14 +798,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/model/type/RoleType.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/repository/UsersRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -901,14 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-security.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="26" column="86" lean-forward="true" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -925,19 +872,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/NotLoggedErrorView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/NotLoggedErrorView.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/vaadin/spring/extensions/vaadin-spring-ext-security/2.0.0.RELEASE/vaadin-spring-ext-security-2.0.0.RELEASE.jar!/org/vaadin/spring/security/VaadinSecurity.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
           <caret line="23" column="18" lean-forward="true" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -957,26 +896,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.2.3.RELEASE/spring-security-core-4.2.3.RELEASE.jar!/org/springframework/security/access/annotation/Secured.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/configuration/AuthenticationConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
-          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -989,50 +919,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/configuration/SecuredViewAccessControl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="36" column="42" lean-forward="false" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+        <state relative-caret-position="504">
+          <caret line="35" column="30" lean-forward="false" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#883#884#0" expanded="false" />
+            <element signature="e#924#925#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-security.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="26" column="86" lean-forward="false" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/configuration/SecuredViewAccessControl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="35" column="30" lean-forward="false" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#883#884#0" expanded="true" />
-            <element signature="e#924#925#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="399">
+          <caret line="22" column="11" lean-forward="false" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserDetailsServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
-          <caret line="31" column="79" lean-forward="true" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
+          <caret line="31" column="79" lean-forward="false" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserProfileView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/service/ImageUploaderService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="57" column="70" lean-forward="false" selection-start-line="57" selection-start-column="70" selection-end-line="57" selection-end-column="70" />
+        <state relative-caret-position="252">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/8.2.1/vaadin-server-8.2.1.jar!/com/vaadin/server/AbstractClientConnector.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="84" column="16" lean-forward="false" selection-start-line="84" selection-start-column="16" selection-end-line="84" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="95" column="71" lean-forward="false" selection-start-line="95" selection-start-column="71" selection-end-line="95" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/LoginView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/RegistrationView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="77" column="5" lean-forward="false" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+        <state relative-caret-position="253">
+          <caret line="72" column="44" lean-forward="false" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+          <folding>
+            <element signature="e#1214#1215#0" expanded="true" />
+            <element signature="e#1239#1240#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+            <element signature="e#2145#2146#0" expanded="true" />
+            <element signature="e#2187#2188#0" expanded="true" />
+            <element signature="e#2223#2224#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/service/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/ui/RootUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="108" column="68" lean-forward="true" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1515#1542#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1047,20 +1035,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/RegistrationView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/view/UserProfileView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="72" column="44" lean-forward="true" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kz/vaadin/ui/RootUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+        <state relative-caret-position="552">
+          <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,6 +1,7 @@
 package kz.vaadin.model;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.Set;
 
 @Entity
@@ -21,6 +22,10 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @Lob
+    @Column(name = "avatar")
+    private Blob avatar;
 
     @Transient
     private String confirmPassword;
@@ -86,6 +91,14 @@ public class User {
 
     public void setRoles(Set<Roles> roles) {
         this.roles = roles;
+    }
+
+    public Blob getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Blob avatar) {
+        this.avatar = avatar;
     }
 
     @Override
