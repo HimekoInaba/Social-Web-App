@@ -4,6 +4,8 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Page;
+import com.vaadin.server.StreamResource;
+import com.vaadin.server.VaadinService;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Upload.*;
@@ -14,8 +16,17 @@ import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import sun.misc.IOUtils;
 
+import javax.imageio.ImageIO;
+import javax.persistence.*;
+import javax.xml.transform.stream.StreamSource;
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.file.Files;
+import java.sql.Blob;
+import java.sql.Date;
+import java.text.DateFormat;
 
 @Secured({"ROLE_USER", "ROLE_ADMIN"})
 @SpringView(name = UserProfileView.VIEW_NAME)
@@ -34,6 +45,7 @@ public class UserProfileView extends VerticalLayout implements View{
 
     private User user;
     private long id;
+    private Image avatar;
 
     public void initializeForms(){
 
@@ -46,15 +58,19 @@ public class UserProfileView extends VerticalLayout implements View{
         Label email = new Label("Email: " + user.getEmail());
         Button changeAvatar = new Button("Change avatar");
 
-        addComponents(greetingField, email, changeAvatar, currentSessionUsername, logout, userList);
+        showAvatar();
+
+        addComponents(greetingField, avatar, email, changeAvatar, currentSessionUsername, logout, userList);
         
         setComponentAlignment(greetingField, Alignment.TOP_LEFT);
+        setComponentAlignment(avatar, Alignment.TOP_LEFT);
         setComponentAlignment(email, Alignment.TOP_LEFT);
         setComponentAlignment(changeAvatar, Alignment.TOP_LEFT);
         setComponentAlignment(currentSessionUsername, Alignment.TOP_RIGHT);
         setComponentAlignment(logout, Alignment.TOP_RIGHT);
         setComponentAlignment(userList, Alignment.BOTTOM_CENTER);
 
+        logout.setHeight("100");
         greetingField.addStyleName(ValoTheme.LABEL_H1);
         email.addStyleName(ValoTheme.LABEL_H2);
         currentSessionUsername.addStyleName(ValoTheme.LABEL_H3);
@@ -75,6 +91,16 @@ public class UserProfileView extends VerticalLayout implements View{
         }
         initializeForms();
     }
+
+    void showAvatar(){
+        BufferedImage bufferedImage = userService.getAvatar(user);
+
+        //FileResource resource = new FileResource(new File("C:\\Users\\s.tusupbekov\\IdeaProjects\\Vaadin-Spring-integration-web-application-949c95fdec9ed1b5458c008452842391b9fb3f92\\src\\main\\resources\\avatars\\default_avatar.jpg\\"));
+
+        //avatar = new Image("aa",);
+        avatar.setVisible(true);
+    }
+
 
     void uploadAvatar() {
         class UploadBox extends CustomComponent implements Receiver, ProgressListener, FailedListener, SucceededListener {
@@ -140,7 +166,7 @@ public class UserProfileView extends VerticalLayout implements View{
             public void uploadSucceeded(SucceededEvent event) {
                 image.setVisible(true);
                 image.setSource(new FileResource(file));
-
+                uploadToDatabase();
                 image.markAsDirty();
                 addComponent(image);
                 setComponentAlignment(image, Alignment.TOP_LEFT);
@@ -152,20 +178,21 @@ public class UserProfileView extends VerticalLayout implements View{
                         Notification.Type.ERROR_MESSAGE);
             }
 
-            /*public void uploadToDatabase(){
+            public void uploadToDatabase(){
                 byte[] bFile = new byte[(int) file.length()];
                 try {
                     FileInputStream fileInputStream = new FileInputStream(file);
                     fileInputStream.read(bFile);
+                    bFile = Files.readAllBytes((file).toPath());
+                    Blob blob = new javax.sql.rowset.serial.SerialBlob(bFile);
                     User user = (User) getUI().getSession().getAttribute("user");
-                    user.setAvatar(bFile);
+                    user.setAvatar(blob);
+
+                    System.out.println(blob + " Avatar");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                User user = (User) getUI().getSession().getAttribute("user");
-                user.setAvatar();
-            }*/
+            }
         }
 
         UploadBox uploadbox = new UploadBox();

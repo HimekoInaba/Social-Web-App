@@ -6,7 +6,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.*;
 import kz.vaadin.model.User;
-import kz.vaadin.service.UserServiceImpl;
+import kz.vaadin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ import org.vaadin.spring.annotation.PrototypeScope;
 public class RegistrationView extends VerticalLayout implements View {
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     @Autowired
     UserDetailsService userDetailsService;
