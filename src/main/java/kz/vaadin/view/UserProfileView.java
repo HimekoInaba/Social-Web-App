@@ -4,29 +4,29 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Page;
+import com.vaadin.server.Resource;
 import com.vaadin.server.StreamResource;
-import com.vaadin.server.VaadinService;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Image;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.Upload.*;
 import com.vaadin.ui.themes.ValoTheme;
 import kz.vaadin.model.User;
+import kz.vaadin.service.ImageSource;
 import kz.vaadin.service.UserServiceImpl;
 import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import sun.misc.IOUtils;
 
 import javax.imageio.ImageIO;
-import javax.persistence.*;
-import javax.xml.transform.stream.StreamSource;
 import java.awt.image.BufferedImage;
+import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.nio.file.Files;
-import java.sql.Blob;
-import java.sql.Date;
-import java.text.DateFormat;
 
 @Secured({"ROLE_USER", "ROLE_ADMIN"})
 @SpringView(name = UserProfileView.VIEW_NAME)
@@ -42,6 +42,9 @@ public class UserProfileView extends VerticalLayout implements View{
 
     @Autowired
     RootUI rootUI;
+
+    @Autowired
+    ImageSource imageSource;
 
     private User user;
     private long id;
@@ -93,11 +96,13 @@ public class UserProfileView extends VerticalLayout implements View{
     }
 
     void showAvatar(){
-        BufferedImage bufferedImage = userService.getAvatar(user);
 
         //FileResource resource = new FileResource(new File("C:\\Users\\s.tusupbekov\\IdeaProjects\\Vaadin-Spring-integration-web-application-949c95fdec9ed1b5458c008452842391b9fb3f92\\src\\main\\resources\\avatars\\default_avatar.jpg\\"));
 
-        //avatar = new Image("aa",);
+        StreamSource imagesource = new ImageSource();
+        StreamResource resource = new StreamResource(imagesource, "myimage.png");
+        avatar = new Image("",resource);
+
         avatar.setVisible(true);
     }
 
@@ -184,11 +189,10 @@ public class UserProfileView extends VerticalLayout implements View{
                     FileInputStream fileInputStream = new FileInputStream(file);
                     fileInputStream.read(bFile);
                     bFile = Files.readAllBytes((file).toPath());
-                    Blob blob = new javax.sql.rowset.serial.SerialBlob(bFile);
                     User user = (User) getUI().getSession().getAttribute("user");
-                    user.setAvatar(blob);
+                    user.setAvatar(bFile);
 
-                    System.out.println(blob + " Avatar");
+                    System.out.println(bFile + " Avatar");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

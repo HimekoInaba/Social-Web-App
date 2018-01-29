@@ -48,25 +48,20 @@ public class UserServiceImpl implements UserService {
     }
 
     public BufferedImage getAvatar(User user){
-        Blob blob = user.getAvatar();
-        int blobLength;
         BufferedImage img;
-        byte[] blobAsBytes;
+        byte[] blobAsBytes = user.getAvatar();
 
         try {
-            blobLength = (int) blob.length();
-            blobAsBytes = blob.getBytes(1, blobLength);
             img = ImageIO.read(new ByteArrayInputStream(blobAsBytes));
 
             return img;
-        } catch (SQLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         return null;
     }
+
 
     public void setDefaultAvatar(User user){
         final String FILENAME = "default_avatar.jpg";
@@ -78,8 +73,7 @@ public class UserServiceImpl implements UserService {
             byte[] bFile = new byte[(int) file.length()];
             fileInputStream.read(bFile);
             bFile = Files.readAllBytes((file).toPath());
-            Blob blob = new SerialBlob(bFile);
-            user.setAvatar(blob);
+            user.setAvatar(bFile);
         } catch (Exception e) {
             e.printStackTrace();
         }

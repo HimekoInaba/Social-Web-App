@@ -1,5 +1,7 @@
 package kz.vaadin.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.sql.Blob;
 import java.util.Set;
@@ -23,9 +25,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Lob
     @Column(name = "avatar")
-    private Blob avatar;
+    private byte[] avatar;
 
     @Transient
     private String confirmPassword;
@@ -93,11 +94,11 @@ public class User {
         this.roles = roles;
     }
 
-    public Blob getAvatar() {
+    public byte[] getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Blob avatar) {
+    public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
     }
 

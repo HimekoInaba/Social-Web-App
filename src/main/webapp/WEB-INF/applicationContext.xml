@@ -42,5 +42,4 @@
     </bean>
 
     <import resource="appconfig-security.xml"/>
-
 </beans>
