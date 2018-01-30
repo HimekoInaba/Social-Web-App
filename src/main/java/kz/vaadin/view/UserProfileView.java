@@ -1,11 +1,9 @@
 package kz.vaadin.view;
 
+import com.vaadin.server.StreamResource;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.FileResource;
 import com.vaadin.server.Page;
-import com.vaadin.server.Resource;
-import com.vaadin.server.StreamResource;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button;
@@ -15,7 +13,6 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.Upload.*;
 import com.vaadin.ui.themes.ValoTheme;
 import kz.vaadin.model.User;
-import kz.vaadin.service.ImageSource;
 import kz.vaadin.service.UserServiceImpl;
 import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +21,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.nio.file.Files;
+
 
 @Secured({"ROLE_USER", "ROLE_ADMIN"})
 @SpringView(name = UserProfileView.VIEW_NAME)
@@ -42,9 +39,6 @@ public class UserProfileView extends VerticalLayout implements View{
 
     @Autowired
     RootUI rootUI;
-
-    @Autowired
-    ImageSource imageSource;
 
     private User user;
     private long id;
@@ -73,7 +67,6 @@ public class UserProfileView extends VerticalLayout implements View{
         setComponentAlignment(logout, Alignment.TOP_RIGHT);
         setComponentAlignment(userList, Alignment.BOTTOM_CENTER);
 
-        logout.setHeight("100");
         greetingField.addStyleName(ValoTheme.LABEL_H1);
         email.addStyleName(ValoTheme.LABEL_H2);
         currentSessionUsername.addStyleName(ValoTheme.LABEL_H3);
@@ -95,15 +88,30 @@ public class UserProfileView extends VerticalLayout implements View{
         initializeForms();
     }
 
-    void showAvatar(){
+    private void showAvatar(){
+        StreamResource imageResource = createStreamResource();
+        imageResource.setCacheTime(0);
 
-        //FileResource resource = new FileResource(new File("C:\\Users\\s.tusupbekov\\IdeaProjects\\Vaadin-Spring-integration-web-application-949c95fdec9ed1b5458c008452842391b9fb3f92\\src\\main\\resources\\avatars\\default_avatar.jpg\\"));
-
-        StreamSource imagesource = new ImageSource();
-        StreamResource resource = new StreamResource(imagesource, "myimage.png");
-        avatar = new Image("",resource);
-
+        avatar = new Image(null, imageResource);
+        avatar.markAsDirty();
         avatar.setVisible(true);
+    }
+
+    private StreamResource createStreamResource() {
+        return new StreamResource(new StreamResource.StreamSource() {
+            public InputStream getStream() {
+
+                BufferedImage bi = userService.getAvatar(user);
+                try {
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    ImageIO.write(bi, "png", bos);
+                    return new ByteArrayInputStream(bos.toByteArray());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        }, "dateImage.png");
     }
 
 
@@ -113,9 +121,6 @@ public class UserProfileView extends VerticalLayout implements View{
             ProgressBar progress = new ProgressBar(0.0f);
             public File file;
             final String PATH = "C:\\Users\\s.tusupbekov\\IdeaProjects\\Vaadin-Spring-integration-web-application-949c95fdec9ed1b5458c008452842391b9fb3f92\\src\\main\\resources\\avatars\\";
-
-            // Show uploaded file in this placeholder
-             Image image = new Image();
 
             public UploadBox() {
                 // Create the upload component and handle all its events
@@ -135,29 +140,47 @@ public class UserProfileView extends VerticalLayout implements View{
                 panelContent.addComponent(progress);
 
                 progress.setVisible(false);
-                image.setVisible(false);
-
                 setCompositionRoot(panel);
             }
 
             public OutputStream receiveUpload(String filename, String mimeType) {
-                FileOutputStream fos = null; // Stream to write to
+                FileOutputStream fos = null;
+                file = new File(PATH + filename);
                 try {
-                    // Open the file for writing.
-                    file = new File(PATH + filename);
                     fos = new FileOutputStream(file);
+
                 } catch (final java.io.FileNotFoundException e) {
                     new Notification("Could not open file<br/>",
                             e.getMessage(),
                             Notification.Type.ERROR_MESSAGE)
                             .show(Page.getCurrent());
                     return null;
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
                 return fos;
+            }
+
+            public void uploadToDB(){
+                FileInputStream fileInputStream = null;
+                try {
+                    fileInputStream = new FileInputStream(file);
+                    byte[] bFile = new byte[(int) file.length()];
+                    fileInputStream.read(bFile);
+                    bFile = Files.readAllBytes((file).toPath());
+                    user.setAvatar(bFile);
+                    userService.saveUser(user);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
             public void updateProgress(long readBytes, long contentLength) {
+                uploadToDB();
                 progress.setVisible(true);
                 if (contentLength == -1)
                     progress.setIndeterminate(true);
@@ -169,33 +192,15 @@ public class UserProfileView extends VerticalLayout implements View{
             }
 
             public void uploadSucceeded(SucceededEvent event) {
-                image.setVisible(true);
-                image.setSource(new FileResource(file));
-                uploadToDatabase();
-                image.markAsDirty();
-                addComponent(image);
-                setComponentAlignment(image, Alignment.TOP_LEFT);
+                progress.setVisible(false);
+                avatar.markAsDirty();
+                getUI().getPage().reload();
             }
 
             @Override
             public void uploadFailed(FailedEvent event) {
                 Notification.show("Upload failed",
                         Notification.Type.ERROR_MESSAGE);
-            }
-
-            public void uploadToDatabase(){
-                byte[] bFile = new byte[(int) file.length()];
-                try {
-                    FileInputStream fileInputStream = new FileInputStream(file);
-                    fileInputStream.read(bFile);
-                    bFile = Files.readAllBytes((file).toPath());
-                    User user = (User) getUI().getSession().getAttribute("user");
-                    user.setAvatar(bFile);
-
-                    System.out.println(bFile + " Avatar");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         }
 

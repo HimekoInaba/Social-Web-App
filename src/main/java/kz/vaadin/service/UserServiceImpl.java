@@ -9,12 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
-import javax.sql.rowset.serial.SerialBlob;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,6 +41,10 @@ public class UserServiceImpl implements UserService {
         Set<Roles> roles = new HashSet<>();
         roles.add(rolesRepository.getOne(2L));
         user.setRoles(roles);
+        saveUser(user);
+    }
+
+    public void saveUser(User user){
         userRepository.save(user);
     }
 
@@ -53,7 +54,6 @@ public class UserServiceImpl implements UserService {
 
         try {
             img = ImageIO.read(new ByteArrayInputStream(blobAsBytes));
-
             return img;
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
 
 
     public void setDefaultAvatar(User user){
-        final String FILENAME = "default_avatar.jpg";
+        final String FILENAME = "default_avatar.png";
         final String PATH = "C:\\Users\\s.tusupbekov\\IdeaProjects\\Vaadin-Spring-integration-web-application-949c95fdec9ed1b5458c008452842391b9fb3f92\\src\\main\\resources\\avatars\\";
         File file = new File(PATH + FILENAME);
 

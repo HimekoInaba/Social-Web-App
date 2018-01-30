@@ -1,9 +1,6 @@
 package kz.vaadin.model;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.sql.Blob;
 import java.util.Set;
 
 @Entity
@@ -11,8 +8,6 @@ import java.util.Set;
 public class User {
 
     @Id
-    //@SequenceGenerator(name="hibernate_sequence",sequenceName="MY_SEQ_GEN", initialValue=205, allocationSize=12)
-    //@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="hibernate_sequence")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 

@@ -5,7 +5,6 @@ import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Push;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.server.VaadinService;
 import com.vaadin.shared.communication.PushMode;
 import com.vaadin.shared.ui.ui.Transport;
 import com.vaadin.spring.navigator.SpringViewProvider;
@@ -92,7 +91,7 @@ public class RootUI extends UI implements LoginInterface{
     private void showMainScreen() {
         createNavigator();
         layout.setMargin(true);
-        layout.setWidth("80%");
+        layout.setWidth("75%");
         setSizeUndefined();
         setContent(layout);
 

@@ -10,4 +10,5 @@ public interface UserService {
     void add(User user);
     void setDefaultAvatar(User user);
     BufferedImage getAvatar(User user);
+    void saveUser(User user);
 }

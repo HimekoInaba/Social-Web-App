@@ -9,8 +9,6 @@ import java.util.Set;
 public class Roles {
 
     @Id
-    //@SequenceGenerator(name="hibernate_sequence",sequenceName="MY_SEQ_GEN", initialValue=205, allocationSize=12)
-    //@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="hibernate_sequence")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 

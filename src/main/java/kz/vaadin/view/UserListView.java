@@ -4,6 +4,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
+import com.vaadin.ui.renderers.ButtonRenderer;
 import com.vaadin.ui.themes.ValoTheme;
 import kz.vaadin.model.User;
 import kz.vaadin.repository.UsersRepository;
@@ -37,6 +38,11 @@ public class UserListView extends VerticalLayout implements View {
         grid.addColumn(User::getId).setCaption("Id");
         grid.addColumn(User::getUsername).setCaption("Username");
         grid.addColumn(User::getEmail).setCaption("Email");
+        grid.addColumn(person -> "Remove",
+                new ButtonRenderer(clickEvent -> {
+                    users.remove(clickEvent.getItem());
+                    grid.setItems(users);
+                })).setCaption("Delete");
 
         addComponents(label, grid, logout);
         setComponentAlignment(label, Alignment.MIDDLE_CENTER);
