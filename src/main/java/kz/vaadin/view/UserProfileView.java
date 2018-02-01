@@ -12,6 +12,9 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Upload.*;
 import com.vaadin.ui.themes.ValoTheme;
+import com.vaadin.ui.Upload.FailedListener;
+import com.vaadin.ui.Upload.ProgressListener;
+import com.vaadin.ui.Upload.Receiver;
 import kz.vaadin.model.User;
 import kz.vaadin.service.UserServiceImpl;
 import kz.vaadin.ui.RootUI;
@@ -23,6 +26,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 @Secured({"ROLE_USER", "ROLE_ADMIN"})
@@ -73,7 +79,11 @@ public class UserProfileView extends VerticalLayout implements View{
 
         logout.addClickListener(click -> rootUI.logout());
         userList.addClickListener(click -> rootUI.navigateToUserlist());
-        changeAvatar.addClickListener(click -> uploadAvatar());
+        changeAvatar.addClickListener(click -> {
+            changeAvatar.setVisible(false);
+            uploadAvatar();
+            changeAvatar.setVisible(true);
+        });
     }
 
     @Override
@@ -121,10 +131,11 @@ public class UserProfileView extends VerticalLayout implements View{
             ProgressBar progress = new ProgressBar(0.0f);
             public File file;
             final String PATH = "C:\\Users\\s.tusupbekov\\IdeaProjects\\Vaadin-Spring-integration-web-application-949c95fdec9ed1b5458c008452842391b9fb3f92\\src\\main\\resources\\avatars\\";
+            Upload upload;
 
             public UploadBox() {
                 // Create the upload component and handle all its events
-                Upload upload = new Upload("Upload the image here", null);
+                upload = new Upload("Upload the image here", null);
                 upload.setReceiver(this);
                 upload.addProgressListener(this);
                 upload.addFailedListener(this);
@@ -144,6 +155,7 @@ public class UserProfileView extends VerticalLayout implements View{
             }
 
             public OutputStream receiveUpload(String filename, String mimeType) {
+
                 FileOutputStream fos = null;
                 file = new File(PATH + filename);
                 try {
@@ -162,8 +174,25 @@ public class UserProfileView extends VerticalLayout implements View{
                 return fos;
             }
 
+            /*public boolean uploadStarted(String contentType) {
+
+                ArrayList<String> allowedMimeTypes = new ArrayList<>();
+                allowedMimeTypes.add("image/jpg");
+                allowedMimeTypes.add("image/png");
+
+                boolean allowed = false;
+                for(int i=0;i<allowedMimeTypes.size();i++){
+                    if(contentType.equalsIgnoreCase(allowedMimeTypes.get(i))){
+                        allowed = true;
+                        break;
+                    }
+                }
+
+                return allowed;
+            }*/
+
             public void uploadToDB(){
-                FileInputStream fileInputStream = null;
+                FileInputStream fileInputStream;
                 try {
                     fileInputStream = new FileInputStream(file);
                     byte[] bFile = new byte[(int) file.length()];
