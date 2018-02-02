@@ -5,10 +5,12 @@ import kz.vaadin.model.User;
 import kz.vaadin.repository.RolesRepository;
 import kz.vaadin.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
+import javax.management.Notification;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
@@ -39,17 +41,22 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id);
     }
 
-    public void add(User user) {
+    public String add(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         setDefaultAvatar(user);
         Set<Roles> roles = new HashSet<>();
         roles.add(rolesRepository.getOne(2L));
         user.setRoles(roles);
-        saveUser(user);
+        return saveUser(user);
     }
 
-    public void saveUser(User user){
-        userRepository.save(user);
+    public String saveUser(User user){
+        try {
+            userRepository.save(user);
+        }catch (DataIntegrityViolationException ex){
+            return "Entered username is already used!";
+        }
+        return null;
     }
 
     public BufferedImage getAvatar(User user){

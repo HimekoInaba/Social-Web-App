@@ -63,10 +63,9 @@ public class RootUI extends UI implements LoginInterface{
 
     public final static String USERPROFILEVIEW =  UserProfileView.VIEW_NAME;
     public final static String USERLISTVIEW = UserListView.VIEW_NAME;
+    public final static String EDITUSERPROFILE = EditUserProfileView.VIEW_NAME;
 
     private Navigator navigator;
-
-    User user;
 
     @Autowired
     private ApplicationContext appContext;
@@ -105,15 +104,15 @@ public class RootUI extends UI implements LoginInterface{
         welcome.addStyleName(ValoTheme.LABEL_H1);
 
         profile.addClickListener(click -> {
-            user = (User) getUI().getSession().getAttribute("user");
+            Authentication auth = vaadinSecurity.getAuthentication();
+            String  username = auth.getName();
+            User user = userService.findByUsername(username);
             getUI().getNavigator().navigateTo(RootUI.USERPROFILEVIEW + "/" + user.getId());
         });
 
         userlist.addClickListener(click -> navigateToUserlist());
 
         logout.addClickListener(click -> logout());
-
-
     }
 
     public void logout(){
@@ -127,7 +126,6 @@ public class RootUI extends UI implements LoginInterface{
             getUI().getNavigator().navigateTo(RootUI.USERLISTVIEW);
         }
         catch (Exception e){
-            RootUI.getCurrent().getPage().reload();
             Notification.show("You don't have enough authorities to visit page", Notification.Type.ERROR_MESSAGE);
         }
     }

@@ -89,7 +89,6 @@ public class UserProfileView extends VerticalLayout implements View{
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         if(event.getParameters() != null){
-            // split at "/", add each part as a label
             String[] msgs = event.getParameters().split("/");
             for (String msg : msgs) {
                 id = (long) Integer.parseInt(msg);

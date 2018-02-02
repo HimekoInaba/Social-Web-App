@@ -9,10 +9,10 @@ CREATE DATABASE "VaadinReg"
        LC_COLLATE = 'Russian_Russia.1251'
        LC_CTYPE = 'Russian_Russia.1251'
        CONNECTION LIMIT = -1;
-
+       
 CREATE TABLE Users(
 	id INT PRIMARY KEY NOT NULL,
-	username VARCHAR(255) NOT NULL,
+	username VARCHAR(255) UNIQUE NOT NULL,
 	password VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL,
 	avatar bytea
@@ -34,4 +34,3 @@ CREATE TABLE User_Roles(
 
 INSERT INTO Roles VALUES(1, 'ROLE_ADMIN');
 INSERT INTO Roles VALUES(2, 'ROLE_USER');
-

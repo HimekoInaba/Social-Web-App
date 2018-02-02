@@ -1,6 +1,5 @@
 package kz.vaadin.view;
 
-import com.vaadin.data.Binder;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
@@ -14,7 +13,6 @@ import kz.vaadin.ui.RootUI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 
-import javax.persistence.Column;
 import java.util.List;
 
 @Secured({"ROLE_ADMIN"})
@@ -39,43 +37,27 @@ public class UserListView extends VerticalLayout implements View {
         Button mainView = new Button("Back to Main Page");
         List<User> users = usersRepository.findAll();
         Grid<User> grid = new Grid<>();
-        TextField username = new TextField("");
-        TextField email = new TextField("");
-
-        Binder<User> binder = grid.getEditor().getBinder();
-
-        Binder.Binding<User, String> usernameBinder = binder.forField(username)
-                .bind(User::getUsername, User::setUsername);
-
-
-        Binder.Binding<User, String> emailBinder = binder.forField(email)
-                .bind(User::getEmail, User::setEmail);
 
         grid.setWidth("50%");
         grid.getEditor().setEnabled(true);
         grid.setItems(users);
         grid.addColumn(User::getId).setCaption("Id");
-        grid.addColumn(User::getUsername).setCaption("Username").setId("username");
+        grid.addComponentColumn(myBean -> {
+            User user = myBean;
+            Button username = new Button(user.getUsername());
+            username.addStyleName(ValoTheme.BUTTON_LINK);
+            username.addClickListener(event ->
+                    RootUI.getCurrent().getNavigator().navigateTo(RootUI.EDITUSERPROFILE + "/" + user.getId()));
+            return username;
+        }).setCaption("Username");
         grid.addColumn(User::getEmail).setCaption("Email").setId("email");
-        grid.addColumn(person -> "Remove",
+        grid.addColumn(user -> "Remove",
                 new ButtonRenderer(clickEvent -> {
                     User user = (User) clickEvent.getItem();
                     usersRepository.delete(user);
                     users.remove(clickEvent.getItem());
                     grid.setItems(users);
                 })).setCaption("Delete");
-        grid.addColumn(person -> "Save",
-                new ButtonRenderer<>(clickEvent ->{
-                    User user = clickEvent.getItem();
-                    usersRepository.save(user);
-                    grid.setItems(users);
-                    grid.clearSortOrder();
-                })).setCaption("Save changes");
-        grid.addColumn(person -> "Go to profile",
-                    new ButtonRenderer<>(clickEvent ->{
-                        User user = clickEvent.getItem();
-                        getUI().getNavigator().navigateTo(RootUI.USERPROFILEVIEW + "/" + user.getId());
-                    })).setCaption("Profile");
 
         addComponents(label, grid, mainView, logout);
         label.addStyleName(ValoTheme.LABEL_H1);
@@ -84,10 +66,7 @@ public class UserListView extends VerticalLayout implements View {
         setComponentAlignment(mainView, Alignment.MIDDLE_CENTER);
         setComponentAlignment(logout, Alignment.TOP_RIGHT);
 
-        grid.getColumn("username").setEditorBinding(usernameBinder);
-        grid.getColumn("email").setEditorBinding(emailBinder);
-
-        mainView.addClickListener(click -> RootUI.getCurrent().getNavigator().navigateTo("/#!/"));
+        mainView.addClickListener(click -> RootUI.getCurrent().getNavigator().navigateTo("/"));
         logout.addClickListener(click -> rootUI.logout());
     }
 

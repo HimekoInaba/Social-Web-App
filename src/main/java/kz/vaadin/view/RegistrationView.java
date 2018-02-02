@@ -3,7 +3,6 @@ package kz.vaadin.view;
 import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.View;
-import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.*;
 import kz.vaadin.model.User;
 import kz.vaadin.service.UserService;
@@ -30,7 +29,7 @@ public class RegistrationView extends VerticalLayout implements View {
 
         Label label = new Label("Enter your information below to register:");
         TextField username = new TextField("Username");
-        PasswordField password = new PasswordField("Passoword");
+        PasswordField password = new PasswordField("Password");
         PasswordField confirmPassword = new PasswordField("Confirm password");
         TextField email = new TextField("E-mail");
         Button register = new Button("Register");
@@ -69,10 +68,14 @@ public class RegistrationView extends VerticalLayout implements View {
         register.addClickListener(click -> {
             if(username.getValue() !="" && password.getValue() != "" && confirmPassword.getValue() !="" && email.getValue() != ""){
                 if (verifyPassword(password.getValue(), confirmPassword.getValue())) {
-                    userService.add(new User(username.getValue(), password.getValue(), confirmPassword.getValue(), email.getValue()));
-                    userDetailsService.loadUserByUsername(username.getValue());
-                    VaadinSession currentSession = getSession();
-                    loginView.login(username.getValue(), password.getValue(), currentSession);
+                    String exception = userService.add(new User(username.getValue(), password.getValue(),
+                            confirmPassword.getValue(), email.getValue()));
+                    if(exception != null)
+                        Notification.show(exception, Notification.Type.ERROR_MESSAGE);
+                    else {
+                        userDetailsService.loadUserByUsername(username.getValue());
+                        loginView.login(username.getValue(), password.getValue());
+                    }
                 } else {
                     Notification.show("Passwords don't match!", Notification.Type.ERROR_MESSAGE);
                 }
