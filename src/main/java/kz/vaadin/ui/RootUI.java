@@ -33,8 +33,8 @@ import org.vaadin.spring.security.VaadinSecurity;
  * The ui is initialized using {@link #init(VaadinRequest)}. This method is intended to be
  * overridden to add component to the user interface and initialize non-component functionality.
  */
-@Theme("mytheme")
 @SpringUI(path = "/")
+@Theme("mytheme")
 @SuppressWarnings("serial")
 @Push(value = PushMode.AUTOMATIC, transport = Transport.LONG_POLLING)
 public class RootUI extends UI implements LoginInterface{
@@ -94,7 +94,7 @@ public class RootUI extends UI implements LoginInterface{
         setSizeUndefined();
         setContent(layout);
 
-        Label welcome = new Label("You are succefully loged in, welcome to the Main Screen");
+        Label welcome = new Label("Welcome to the Main Screen");
         Button profile = new Button("Your profile");
         Button userlist = new Button("List of all users");
         Button logout = new Button("Logout");

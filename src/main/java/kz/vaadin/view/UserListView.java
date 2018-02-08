@@ -66,7 +66,7 @@ public class UserListView extends VerticalLayout implements View {
         setComponentAlignment(mainView, Alignment.MIDDLE_CENTER);
         setComponentAlignment(logout, Alignment.TOP_RIGHT);
 
-        mainView.addClickListener(click -> RootUI.getCurrent().getNavigator().navigateTo("/"));
+        mainView.addClickListener(click -> getUI().getPage().setLocation("/home/"));
         logout.addClickListener(click -> rootUI.logout());
     }
 

@@ -56,14 +56,16 @@ public class UserProfileView extends VerticalLayout implements View{
 
         Button logout = new Button("Logout");
         Button userList = new Button("List of all users");
+        Button changeAvatar = new Button("Change avatar");
+        Button mainView = new Button("Main view");
         Label greetingField = new Label("Welcome to your profile, " + user.getUsername());
         Label currentSessionUsername = new Label(user.getUsername());
         Label email = new Label("Email: " + user.getEmail());
-        Button changeAvatar = new Button("Change avatar");
+
 
         showAvatar();
 
-        addComponents(greetingField, avatar, email, changeAvatar, currentSessionUsername, logout, userList);
+        addComponents(greetingField, avatar, email, changeAvatar, currentSessionUsername, logout, mainView, userList);
         
         setComponentAlignment(greetingField, Alignment.TOP_LEFT);
         setComponentAlignment(avatar, Alignment.TOP_LEFT);
@@ -72,12 +74,14 @@ public class UserProfileView extends VerticalLayout implements View{
         setComponentAlignment(currentSessionUsername, Alignment.TOP_RIGHT);
         setComponentAlignment(logout, Alignment.TOP_RIGHT);
         setComponentAlignment(userList, Alignment.BOTTOM_CENTER);
+        setComponentAlignment(mainView, Alignment.BOTTOM_CENTER);
 
         greetingField.addStyleName(ValoTheme.LABEL_H1);
         email.addStyleName(ValoTheme.LABEL_H2);
         currentSessionUsername.addStyleName(ValoTheme.LABEL_H3);
 
         logout.addClickListener(click -> rootUI.logout());
+        mainView.addClickListener(click -> getUI().getPage().setLocation("/home/"));
         userList.addClickListener(click -> rootUI.navigateToUserlist());
         changeAvatar.addClickListener(click -> {
             changeAvatar.setVisible(false);
@@ -172,23 +176,6 @@ public class UserProfileView extends VerticalLayout implements View{
 
                 return fos;
             }
-
-            /*public boolean uploadStarted(String contentType) {
-
-                ArrayList<String> allowedMimeTypes = new ArrayList<>();
-                allowedMimeTypes.add("image/jpg");
-                allowedMimeTypes.add("image/png");
-
-                boolean allowed = false;
-                for(int i=0;i<allowedMimeTypes.size();i++){
-                    if(contentType.equalsIgnoreCase(allowedMimeTypes.get(i))){
-                        allowed = true;
-                        break;
-                    }
-                }
-
-                return allowed;
-            }*/
 
             public void uploadToDB(){
                 FileInputStream fileInputStream;
