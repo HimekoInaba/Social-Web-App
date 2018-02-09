@@ -4,7 +4,10 @@ C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\view\EditUserProfileView.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\model\Roles.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\ui\RootUI.java
+C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\soap\client\wsdl\GetUserResponse.java
+C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\soap\client\wsdl\ObjectFactory.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\model\User.java
+C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\soap\client\wsdl\GetUserRequest.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\configuration\AuthenticationConfiguration.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\repository\UsersRepository.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\view\UserListView.java
@@ -13,4 +16,5 @@ C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\service\UserDetailsServiceImpl.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\service\UserServiceImpl.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\view\UserProfileView.java
+C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\soap\client\wsdl\package-info.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\service\UserService.java

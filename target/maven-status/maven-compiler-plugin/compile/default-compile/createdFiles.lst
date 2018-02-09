@@ -5,11 +5,15 @@ kz\vaadin\repository\UsersRepository.class
 kz\vaadin\service\UserDetailsServiceImpl.class
 kz\vaadin\view\RegistrationView.class
 kz\vaadin\model\Roles.class
+soap\client\wsdl\GetUserResponse.class
+soap\client\wsdl\GetUserRequest.class
+soap\client\wsdl\ObjectFactory.class
 kz\vaadin\ui\RootUI$MyConfiguration.class
 kz\vaadin\view\UserProfileView.class
 kz\vaadin\ui\RootUI$MyContextLoaderListener.class
 kz\vaadin\service\UserServiceImpl.class
 kz\vaadin\view\EditUserProfileView.class
+soap\client\wsdl\package-info.class
 kz\vaadin\view\UserProfileView$1.class
 kz\vaadin\view\UserProfileView$1UploadBox.class
 kz\vaadin\view\LoginView.class

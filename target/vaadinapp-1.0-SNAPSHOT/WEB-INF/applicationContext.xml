@@ -42,5 +42,7 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
+    <bean id="userClient" class="soap.client.wsdl.UserClient"></bean>
+
     <import resource="appconfig-security.xml"/>
 </beans>

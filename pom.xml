@@ -146,6 +146,22 @@
             <artifactId>clickabletextrenderer</artifactId>
             <version>1.0.3</version>
         </dependency>
+		<dependency>
+			<groupId>org.springframework.plugin</groupId>
+			<artifactId>spring-plugin-core</artifactId>
+			<version>1.2.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>5.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+			<version>3.0.0.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 
@@ -194,7 +210,6 @@
 					</filesets>
 				</configuration>
 			</plugin>
-
 			<!-- The Jetty plugin allows us to easily test the development build by
 				running jetty:run on the command line. -->
 			<plugin>
@@ -203,6 +218,30 @@
 				<version>${jetty.plugin.version}</version>
 				<configuration>
 					<scanIntervalSeconds>2</scanIntervalSeconds>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.12.3</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaLanguage>WSDL</schemaLanguage>
+					<generateDirectory>
+						C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java
+					</generateDirectory>
+					<generatePackage>soap.client.wsdl</generatePackage>
+					<schemas>
+						<schema>
+							<url>http://localhost:8080/ws/users.wsdl</url>
+						</schema>
+					</schemas>
 				</configuration>
 			</plugin>
 		</plugins>
