@@ -5,6 +5,8 @@ kz\vaadin\repository\UsersRepository.class
 kz\vaadin\service\UserDetailsServiceImpl.class
 kz\vaadin\view\RegistrationView.class
 kz\vaadin\model\Roles.class
+kz\vaadin\client\soap\UserClient.class
+kz\vaadin\client\soap\UserConfiguration.class
 soap\client\wsdl\GetUserResponse.class
 soap\client\wsdl\GetUserRequest.class
 soap\client\wsdl\ObjectFactory.class

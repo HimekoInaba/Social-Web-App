@@ -19,6 +19,9 @@
     <bean class="kz.vaadin.ui.RootUI.MyConfiguration"/>
     <context:component-scan base-package="kz.vaadin" />
 
+    <bean class="kz.vaadin.client.soap.UserConfiguration"/>
+    <context:component-scan base-package="kz.vaadin.client" />
+
     <jee:jndi-lookup id="dbDataSource"
                      jndi-name="jdbc/DatabaseName"
                      expected-type="javax.sql.DataSource" />
@@ -42,7 +45,7 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <bean id="userClient" class="soap.client.wsdl.UserClient"></bean>
+    <bean id="userClient" class="kz.vaadin.client.soap.UserClient"></bean>
 
     <import resource="appconfig-security.xml"/>
 </beans>

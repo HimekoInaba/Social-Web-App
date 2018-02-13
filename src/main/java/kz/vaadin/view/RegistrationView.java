@@ -4,13 +4,15 @@ import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
+import kz.vaadin.client.soap.UserClient;
 import kz.vaadin.model.User;
 import kz.vaadin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.vaadin.spring.annotation.PrototypeScope;
-import soap.client.wsdl.UserClient;
+import soap.client.wsdl.GetUserRequest;
+import soap.client.wsdl.GetUserResponse;
 
 
 @PrototypeScope
@@ -51,7 +53,7 @@ public class RegistrationView extends VerticalLayout implements View {
 
         new Binder<User>().forField(username)
                 .withNullRepresentation("")
-                .withValidator(s -> s.length() > 8, "Username length must be between at least 8 characters!")
+                .withValidator(s -> s.length() > 8, "Username length must be at least 8 characters!")
                 .withValidator(s -> s.length() < 32,"Username length must not exceed 32 characters!")
                 .bind(User::getUsername, User::setUsername);
 
@@ -85,8 +87,12 @@ public class RegistrationView extends VerticalLayout implements View {
         });
 
         registerViaSOAP.addClickListener(click -> {
-            if(validate(username, password, confirmPassword, email))
-                userClient.getUser(username.getValue(), password.getValue(), confirmPassword.getValue(), email.getValue());
+            if(validate(username, password, confirmPassword, email)) {
+                GetUserResponse getUserResponse = userClient.setUser(username.getValue(),
+                        password.getValue(), confirmPassword.getValue(), email.getValue());
+                Notification.show(getUserResponse.getStatus(), Notification.Type.HUMANIZED_MESSAGE);
+                loginView.login(username.getValue(), password.getValue());
+            }
             else
                 Notification.show("Error!", Notification.Type.ERROR_MESSAGE);
         });
@@ -95,10 +101,12 @@ public class RegistrationView extends VerticalLayout implements View {
         registerViaSOAP.setClickShortcut(ShortcutAction.KeyCode.ENTER);
     }
 
+
     private boolean validate(TextField username, PasswordField password, PasswordField confirmPassword, TextField email){
         byte check;
 
-        if(username.getValue() !="" && password.getValue() != "" && confirmPassword.getValue() !="" && email.getValue() != "")
+        if(notNullCheck(username.getValue(), password.getValue(),
+                confirmPassword.getValue(), email.getValue()))
             check = 1;
         else
             check = 2;
@@ -122,4 +130,13 @@ public class RegistrationView extends VerticalLayout implements View {
         return false;
     }
 
+    private boolean notNullCheck(String username, String password, String confirmPassword, String email){
+        try {
+            if(!(username.isEmpty() && password.isEmpty() && confirmPassword.isEmpty() && email.isEmpty()))
+                return true;
+        }catch (Exception e){
+            return false;
+        }
+        return false;
+    }
 }

@@ -11,10 +11,12 @@ C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\configuration\AuthenticationConfiguration.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\repository\UsersRepository.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\view\UserListView.java
+C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\client\soap\UserConfiguration.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\view\RegistrationView.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\repository\RolesRepository.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\service\UserDetailsServiceImpl.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\service\UserServiceImpl.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\view\UserProfileView.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\soap\client\wsdl\package-info.java
+C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\client\soap\UserClient.java
 C:\Users\s.tusupbekov\IdeaProjects\Vaadin8-Spring-managed-security\src\main\java\kz\vaadin\service\UserService.java
