@@ -5,13 +5,13 @@ import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
 import kz.vaadin.client.soap.UserClient;
+import kz.vaadin.jms.JmsService;
 import kz.vaadin.model.User;
 import kz.vaadin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.vaadin.spring.annotation.PrototypeScope;
-import soap.client.wsdl.GetUserRequest;
 import soap.client.wsdl.GetUserResponse;
 
 
@@ -31,6 +31,9 @@ public class RegistrationView extends VerticalLayout implements View {
     @Autowired
     UserClient userClient;
 
+    @Autowired
+    JmsService jmsService;
+
     public RegistrationView() {
 
         Label label = new Label("Enter your information below to register:");
@@ -40,8 +43,9 @@ public class RegistrationView extends VerticalLayout implements View {
         PasswordField confirmPassword = new PasswordField("Confirm password");
         Button register = new Button("Register");
         Button registerViaSOAP = new Button("Register via SOAP service");
+        Button registerViaJMSREST = new Button("Register via JMS + REST service");
 
-        addComponents(label, username, password, confirmPassword, email, register, registerViaSOAP);
+        addComponents(label, username, password, confirmPassword, email, register, registerViaSOAP, registerViaJMSREST);
 
         setComponentAlignment(label, Alignment.MIDDLE_CENTER);
         setComponentAlignment(username, Alignment.MIDDLE_CENTER);
@@ -50,6 +54,7 @@ public class RegistrationView extends VerticalLayout implements View {
         setComponentAlignment(email, Alignment.MIDDLE_CENTER);
         setComponentAlignment(register, Alignment.MIDDLE_CENTER);
         setComponentAlignment(registerViaSOAP, Alignment.MIDDLE_CENTER);
+        setComponentAlignment(registerViaJMSREST, Alignment.MIDDLE_CENTER);
 
         new Binder<User>().forField(username)
                 .withNullRepresentation("")
@@ -83,7 +88,8 @@ public class RegistrationView extends VerticalLayout implements View {
                     userDetailsService.loadUserByUsername(username.getValue());
                     loginView.login(username.getValue(), password.getValue());
                 }
-            }
+            }else
+                Notification.show("Error!", Notification.Type.ERROR_MESSAGE);
         });
 
         registerViaSOAP.addClickListener(click -> {
@@ -97,8 +103,23 @@ public class RegistrationView extends VerticalLayout implements View {
                 Notification.show("Error!", Notification.Type.ERROR_MESSAGE);
         });
 
+        registerViaJMSREST.addClickListener(click -> {
+            if(validate(username, password, confirmPassword, email)) {
+                try {
+                    jmsService.start(username.getValue());
+                    jmsService.start(password.getValue());
+                    jmsService.start(confirmPassword.getValue());
+                    jmsService.start(email.getValue());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }else
+                Notification.show("Error!", Notification.Type.ERROR_MESSAGE);
+        });
+
         register.setClickShortcut(ShortcutAction.KeyCode.ENTER);
         registerViaSOAP.setClickShortcut(ShortcutAction.KeyCode.ENTER);
+        registerViaJMSREST.setClickShortcut(ShortcutAction.KeyCode.ENTER);
     }
 
 
