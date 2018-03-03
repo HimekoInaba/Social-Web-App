@@ -2,8 +2,9 @@ package kz.vaadin.jms;
 
 import javax.jms.Destination;
 import javax.jms.JMSException;
-import javax.jms.TextMessage;
+import javax.jms.ObjectMessage;
 
+import kz.vaadin.model.User;
 import org.springframework.jms.core.JmsTemplate;
 
 public class Consumer {
@@ -28,7 +29,8 @@ public class Consumer {
     }
 
     public String receiveMessage() throws JMSException {
-        TextMessage textMessage = (TextMessage) jmsTemplate.receive(destination);
-        return textMessage.getText();
+        ObjectMessage objectMessage = (ObjectMessage) jmsTemplate.receive(destination);
+        User user = (User) objectMessage.getObject();
+        return user.getUsername();
     }
 }

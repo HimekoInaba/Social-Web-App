@@ -186,6 +186,16 @@
 			<artifactId>spring-context</artifactId>
 			<version>5.0.2.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-client</artifactId>
+			<version>3.0.15</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-hc</artifactId>
+			<version>3.0.15</version>
+		</dependency>
 	</dependencies>
 
 

@@ -1,12 +1,9 @@
 package kz.vaadin.jms;
 
 import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.Session;
 
+import kz.vaadin.model.User;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 
 public class Producer {
 
@@ -29,12 +26,11 @@ public class Producer {
         this.destination = destination;
     }
 
-    public void sendMessage(final String msg) {
-        System.out.println("Producer sends " + msg);
-        jmsTemplate.send(destination, new MessageCreator() {
-            public Message createMessage(Session session) throws JMSException {
-                return session.createTextMessage(msg);
-            }});
+    public void sendMessage(final User user) {
+        System.out.println("Producer sends " + user.getUsername());
+        jmsTemplate.send(destination, session ->
+                session.createObjectMessage(user));
+
     }
 
 }

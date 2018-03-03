@@ -2,12 +2,14 @@ kz\vaadin\ui\RootUI$Servlet.class
 kz\vaadin\ui\RootUI.class
 kz\vaadin\repository\RolesRepository.class
 kz\vaadin\repository\UsersRepository.class
+kz\vaadin\jms\Producer.class
 kz\vaadin\service\UserDetailsServiceImpl.class
 kz\vaadin\view\RegistrationView.class
 kz\vaadin\model\Roles.class
 kz\vaadin\client\soap\UserClient.class
 kz\vaadin\client\soap\UserConfiguration.class
 soap\client\wsdl\GetUserResponse.class
+kz\vaadin\jms\JmsService.class
 soap\client\wsdl\GetUserRequest.class
 soap\client\wsdl\ObjectFactory.class
 kz\vaadin\ui\RootUI$MyConfiguration.class
@@ -20,6 +22,7 @@ kz\vaadin\view\UserProfileView$1.class
 kz\vaadin\view\UserProfileView$1UploadBox.class
 kz\vaadin\view\LoginView.class
 kz\vaadin\configuration\AuthenticationConfiguration.class
+kz\vaadin\jms\Consumer.class
 kz\vaadin\model\User.class
 kz\vaadin\service\UserService.class
 kz\vaadin\ui\LoginInterface.class

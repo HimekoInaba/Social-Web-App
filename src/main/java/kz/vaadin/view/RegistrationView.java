@@ -106,10 +106,8 @@ public class RegistrationView extends VerticalLayout implements View {
         registerViaJMSREST.addClickListener(click -> {
             if(validate(username, password, confirmPassword, email)) {
                 try {
-                    jmsService.start(username.getValue());
-                    jmsService.start(password.getValue());
-                    jmsService.start(confirmPassword.getValue());
-                    jmsService.start(email.getValue());
+                    jmsService.start(new User(username.getValue(), password.getValue(),
+                            confirmPassword.getValue(), email.getValue()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
