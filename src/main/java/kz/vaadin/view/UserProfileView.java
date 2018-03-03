@@ -106,23 +106,23 @@ public class UserProfileView extends VerticalLayout implements View{
         imageResource.setCacheTime(0);
 
         avatar = new Image(null, imageResource);
+        avatar.setHeight(250, Unit.PIXELS);
+        avatar.setWidth(250, Unit.PIXELS);
         avatar.markAsDirty();
         avatar.setVisible(true);
     }
 
     private StreamResource createStreamResource() {
-        return new StreamResource(new StreamResource.StreamSource() {
-            public InputStream getStream() {
+        return new StreamResource((StreamResource.StreamSource) () -> {
 
-                BufferedImage bi = userService.getAvatar(user);
-                try {
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    ImageIO.write(bi, "png", bos);
-                    return new ByteArrayInputStream(bos.toByteArray());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    return null;
-                }
+            BufferedImage bi = userService.getAvatar(user);
+            try {
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                ImageIO.write(bi, "png", bos);
+                return new ByteArrayInputStream(bos.toByteArray());
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
             }
         }, "dateImage.png");
     }

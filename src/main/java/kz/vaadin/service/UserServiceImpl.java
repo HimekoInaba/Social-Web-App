@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
 
     public void setDefaultAvatar(User user){
         final String FILENAME = "default_avatar.png";
-        final String PATH = "C:\\Users\\s.tusupbekov\\IdeaProjects\\Vaadin-Spring-integration-web-application-949c95fdec9ed1b5458c008452842391b9fb3f92\\src\\main\\resources\\avatars\\";
+        final String PATH = "C:\\Users\\s.tusupbekov\\IdeaProjects\\Vaadin8-Spring-managed-security\\src\\main\\resources\\avatars\\";
         File file = new File(PATH + FILENAME);
 
         try {
