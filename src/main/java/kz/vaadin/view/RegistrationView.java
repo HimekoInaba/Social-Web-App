@@ -108,11 +108,11 @@ public class RegistrationView extends VerticalLayout implements View {
                 try {
                     jmsService.start(new User(username.getValue(), password.getValue(),
                             confirmPassword.getValue(), email.getValue()));
+                    loginView.login(username.getValue(), password.getValue());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }else
-                Notification.show("Error!", Notification.Type.ERROR_MESSAGE);
+            }
         });
 
         register.setClickShortcut(ShortcutAction.KeyCode.ENTER);

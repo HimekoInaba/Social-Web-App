@@ -6,6 +6,7 @@ import javax.jms.ObjectMessage;
 
 import kz.vaadin.model.User;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.web.client.RestTemplate;
 
 public class Consumer {
 
@@ -28,9 +29,17 @@ public class Consumer {
         this.destination = destination;
     }
 
-    public String receiveMessage() throws JMSException {
+    public User receiveMessage() throws JMSException {
         ObjectMessage objectMessage = (ObjectMessage) jmsTemplate.receive(destination);
         User user = (User) objectMessage.getObject();
-        return user.getUsername();
+
+        final String uri = "http://localhost:8082/newuser";
+
+        RestTemplate restTemplate = new RestTemplate();
+        User result = restTemplate.postForObject( uri, user, User.class);
+
+        System.out.println(result);
+
+        return user;
     }
 }
